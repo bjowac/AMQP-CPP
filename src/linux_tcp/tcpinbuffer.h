@@ -123,7 +123,10 @@ public:
     {
         // number of bytes to that still fit in the buffer
         size_t bytes = expected - _size;
-        
+
+        // make sure that the error queue is currently completely empty, so the error queue can be checked
+        OpenSSL::ERR_clear_error();
+
         // read data
         auto result = OpenSSL::SSL_read(ssl, (void *)(_data + _size), bytes);
         

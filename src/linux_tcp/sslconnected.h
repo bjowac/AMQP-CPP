@@ -283,10 +283,6 @@ private:
      */
     TcpState *receive(const Monitor &monitor)
     {
-        // we are going to check for errors after the openssl operations, so we make 
-        // sure that the error queue is currently completely empty
-        OpenSSL::ERR_clear_error();
-
         // start a loop
         do
         {
